@@ -1,0 +1,12 @@
+<html>
+	<head>
+	<title>Query Analyzer</title>
+	</head>
+	<body>
+		<p>Enter query:</p>
+		<form method="POST" action="queryrun.php">
+		<textarea rows="4" cols="50" name="query"></textarea><br/>
+		<input type="checkbox" name="recorded" value="recorddis" checked> Record query and its execution time in the database? (Check if yes)
+		<input type="submit" name="queryLookup" value="Submit Query"/>
+		</form>
+	</body>
