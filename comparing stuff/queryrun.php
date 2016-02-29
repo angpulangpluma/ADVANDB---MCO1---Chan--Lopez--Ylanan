@@ -34,16 +34,20 @@
 				echo "<table>";
 				$i = 0;
 				echo '<tr>';
+				$cols = array();
 				while ($i < mysql_num_fields($result)){
 					$meta = mysql_fetch_field($result, $i);
 					echo '<td>'.$meta->name.'</td>';
+					array_push($cols, $meta->name);
 					$i = $i + 1;
 				}
 				echo '</tr>';
 				while($row = mysql_fetch_array($result)){
-					$currow = current($row);
-					echo '<tr><td>' . $currow . '</td></tr>';
-					next($row);
+					echo '<tr>';
+					for($x = 0; $x < count($cols); $x++){
+						echo '<td>'.$row[$cols[$x]].'</td>';
+					}
+					echo '</tr>';
 				}
 				echo "</table></body></html>";
 
