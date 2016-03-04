@@ -1,10 +1,7 @@
 <?php
 	
 	function displayReport1($sql){
-		ini_set('max_execution_time', 0);
-		$msc = microtime(true);
 		$result = mysql_query($sql);
-		$msc = microtime(true)-$msc;
 		$numrows = mysql_num_rows($result);
 		if($numrows == 0){
 			echo 'Query returned no results and executed within '
@@ -64,9 +61,7 @@
 
 		function displayReport2($one, $two){
 			ini_set('max_execution_time', 0);
-			$msc = microtime(true);
 			$result = mysql_query($one);
-			$msc = microtime(true)-$msc;
 			$numrows = mysql_num_rows($result);
 			if($numrows == 0){
 				echo 'Query returned no results and executed within '
@@ -97,9 +92,7 @@
 			}
 
 			ini_set('max_execution_time', 0);
-			$msc = microtime(true);
 			$result = mysql_query($two);
-			$msc = microtime(true)-$msc;
 			$numrows = mysql_num_rows($result);
 			if($numrows == 0){
 				echo 'Query returned no results and executed within '
@@ -112,10 +105,7 @@
 		}
 
 	function displayResult($sql){
-		ini_set('max_execution_time', 0);
-		$msc = microtime(true);
 		$result = mysql_query($sql);
-		$msc = microtime(true)-$msc;
 		$numrows = mysql_num_rows($result);
 		if($numrows == 0){
 			echo 'Query returned no results and executed within '
@@ -123,8 +113,7 @@
 			exit;
 		} else{
 			echo '<html><head><title>Results</title></head><body>';
-			echo '<p>Your query was: ' . $sql . '<br/>';
-			echo 'Execution time: ' . $msc . '<br/>';
+			displayExecTime($sql);
 			echo 'Results: <br>';
 			echo "<table>";
 			$i = 0;
@@ -154,6 +143,15 @@
 		} else return true;
 	}
 
+	function displayExecTime($sql){
+		ini_set('max_execution_time', 0);
+		$msc = microtime(true);
+		$result = mysql_query($sql);
+		$msc = microtime(true)-$msc;
+		echo '<p>Your query was: ' . $sql . '<br/>';
+		echo 'Execution time: ' . $msc . '</p>';
+	}
+
 	//set variables here
 	require_once 'globals.php';
 
@@ -167,24 +165,15 @@
 	} else {
 		//echo 'Connection established!';
 		mysql_free_result($result);
-		if(isset($_POST['query'])){ //queryanalyzer.html code
-			$sql = $_POST['query'];
-			if($sql==''){
-				echo 'Please enter a query.';
-				exit;
-			} else displayResult($sql);
-			
-		} else if (isset($_POST['selonequery'])){ //queryforone.html code
-			$query = $_POST['selonequery'];
-			switch($query){
+		if(isset($_POST['query'])){
+			switch($_POST['query']){
 				case "0":{
 					echo 'Please select a query from the dropdown box in the previous page.';
 					exit;
 				}; break;
 				case "1":{
-					$sql = "SELECT educal, count(id) FROM hpq_mem 
-					WHERE reln=6 GROUP BY educal ORDER BY educal";
-					displayReport1($sql);
+					displayReport1("SELECT educal, count(id) FROM hpq_mem 
+					WHERE reln=6 GROUP BY educal ORDER BY educal");
 				}; break;
 				case "2":{
 					displayReport2("SELECT count(id) FROM hpq_hh WHERE calam1 = 1 AND calam1_aid = 2 AND disas_prep = 2 UNION ALL
@@ -200,31 +189,22 @@
 						"SELECT count(id) FROM hpq_hh 
 							WHERE calam11 = 1 AND calam11_aid = '2' AND disas_prep = 2");
 				}; break;
-			}
-		} else if (isset($_POST['seltwoquery'])){ //queryfortwo.html code
-			if (isset($_POST['salhouse'])){
-				$onesal = $_POST['onesal'];
-				if(!is_numeric($onesal)){
-					echo 'Please enter a valid salary in the previous page.';
-					exit;
-				} else{
-					$educal = $_POST['eduatt'];
-					$sql = "SELECT count(id) FROM hpq_hh, hpq_mem WHERE hpq_mem.id = hpq_hh.id AND hpq_mem.educal ="+
-					" AND hpq_hh.reln = 6 AND hpq_hh.tenur = __";
-				}
-				
-			} else if (isset($_POST['diedcal'])){
-				switch($query){
-					case "0":{
-						echo 'Please select a query from the dropdown box in the previous page.';
-						exit;
-					}; break;
-				}
-			}
-		} else if (isset($_POST['seltriquery'])){
+				case "3":{
 
-		} else if (isset($_POST['selresquery'])){
+				}; break;
+				case "4":{
 
+				}; break;
+				case "5":{
+
+				}; break;
+				case "6":{
+
+				}; break;
+				case "7":{
+
+				}; break;
+			}			
 		}
 
 	}

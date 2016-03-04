@@ -3,22 +3,30 @@
 ?>
 <html>
 	<head>
-	<title>Query Analyzer</title>
+	<title>Reports Generator - Selected Queries only</title>
 	<script type="text/javascript" src="jquery-1.11.0.js"></script>
 	<script type="text/javascript" src="jquery-ui.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){
-			document.getElementById('seltwoquery').addEventListener('change', function(){
-				switch(document.getElementById('seltwoquery').value){
+			document.getElementById('query').addEventListener('change', function(){
+				switch(document.getElementById('query').value){
 					case '0':{
 						$('#one').hide();
 						$('#two').hide();
 					}; break;
 					case '1':{
-						$('#one').show();
+						$('#one').hide();
 						$('#two').hide();
 					}; break;
 					case '2':{
+						$('#one').hide();
+						$('#two').hide();
+					}; break;
+					case '3':{
+						$('#one').show();
+						$('#two').hide();
+					}; break;
+					case '4':{
 						$('#one').hide();
 						$('#two').show();
 					}; break;
@@ -30,11 +38,13 @@
 	</head>
 	<body>
 		<form method="POST" action="queryrun.php">
-		<select name="seltwoquery" id="seltwoquery">
+		<select name="query" id="query">
 			<option value="0" selected>Select query</option>
-			<option value="1">Number of survey respondents who are parents having 
+			<option value="1">Number of survey respondents per possible educational attainment that are parents</option>
+			<option value="2">Number of survey respondents per calamity that did not have a disaster preparedness kit and did not receive any help in any calamity</option>
+			<option value="3">Number of survey respondents who are parents having 
 			a certain salary and a certain house ownership given their educational attainment</option>
-			<option value="2">Number of survey respondents who died because of a certain calamity and was not given help</option>
+			<option value="4">Number of survey respondents who died because of a certain calamity and was not given help</option>
 		</select><br/>
 		<div id="one" style="display:none" method="POST" name="salhouse" action="queryrun.php">
 			<!--<input type="submit" value="salhouse here!"><br/>-->
@@ -110,7 +120,6 @@
 								echo '<option value=\"'.$x.'\">'.$label.'</option>';
 							}
 							
-							print_r($val);
 						}
 					}
 					?>
