@@ -9,7 +9,7 @@
 			exit;
 		} else{
 			echo '<p>Number of survey respondents per 
-			possible educational attainment that are parents</p>';
+			possible educational attainment that do not have a job nor business</p>';
 			$i = 0;
 			$cols = array();
 			while ($i < mysql_num_fields($result)){
@@ -173,7 +173,7 @@
 				}; break;
 				case "1":{
 					displayReport1("SELECT educal, count(id) FROM hpq_mem 
-					WHERE reln=6 GROUP BY educal ORDER BY educal");
+						WHERE memno=1 AND jobind = 2 AND entrepind = 2 GROUP BY educal ORDER BY educal");
 				}; break;
 				case "2":{
 					displayReport2("SELECT count(id) FROM hpq_hh WHERE calam1 = 1 AND calam1_aid = 2 AND disas_prep = 2 UNION ALL
@@ -205,8 +205,14 @@
 
 				}; break;
 			}			
+		} else if (isset($_POST['queryenter'])){
+			if($_POST['queryenter']!=''){
+				displayResult($_POST['queryenter']);
+			} else {
+				echo ' Please enter a valid query.';
+				exit;
+			}
 		}
-
 	}
 
 
