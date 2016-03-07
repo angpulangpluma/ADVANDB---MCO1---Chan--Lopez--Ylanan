@@ -189,21 +189,6 @@
 						"SELECT count(id) FROM hpq_hh 
 							WHERE calam11 = 1 AND calam11_aid = '2' AND disas_prep = 2");
 				}; break;
-				case "3":{
-
-				}; break;
-				case "4":{
-
-				}; break;
-				case "5":{
-
-				}; break;
-				case "6":{
-
-				}; break;
-				case "7":{
-
-				}; break;
 			}			
 		} else if (isset($_POST['queryenter'])){
 			if($_POST['queryenter']!=''){
