@@ -176,15 +176,15 @@
 						WHERE memno=1 AND jobind = 2 AND entrepind = 2 GROUP BY educal ORDER BY educal");
 				}; break;
 				case "2":{
-					displayReport2("SELECT count(id) FROM hpq_hh WHERE calam1 = 1 AND calam1_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam2 = 1 AND calam2_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam3 = 1 AND calam3_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam4= 1 AND calam4_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam5 = 1 AND calam5_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam6 = 1 AND calam6_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam7 = 1 AND calam7_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam8 = 1 AND calam8_aid = 2 AND disas_prep = 2 UNION ALL
-						SELECT count(id) FROM hpq_hh WHERE calam9 = 1 AND calam9_aid = 2 AND disas_prep = 2 UNION ALL
+					displayReport2("SELECT count(id) FROM hpq_hh WHERE calam1 = 1 AND calam1_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam2 = 1 AND calam2_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam3 = 1 AND calam3_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam4= 1 AND calam4_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam5 = 1 AND calam5_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam6 = 1 AND calam6_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam7 = 1 AND calam7_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam8 = 1 AND calam8_aid = 2 AND disas_prep = 2 UNION
+						SELECT count(id) FROM hpq_hh WHERE calam9 = 1 AND calam9_aid = 2 AND disas_prep = 2 UNION
 						SELECT count(id) FROM hpq_hh WHERE calam10 = 1 AND calam10_aid = 2 AND disas_prep = 2",
 						"SELECT count(id) FROM hpq_hh 
 							WHERE calam11 = 1 AND calam11_aid = '2' AND disas_prep = 2");
