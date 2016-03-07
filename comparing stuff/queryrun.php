@@ -4,8 +4,7 @@
 		$result = mysql_query($sql);
 		$numrows = mysql_num_rows($result);
 		if($numrows == 0){
-			echo 'Query returned no results and executed within '
-			  . $msc . '.';
+			displayExecTime($sql);
 			exit;
 		} else{
 			echo '<p>Number of survey respondents per 
@@ -64,8 +63,7 @@
 			$result = mysql_query($one);
 			$numrows = mysql_num_rows($result);
 			if($numrows == 0){
-				echo 'Query returned no results and executed within '
-				  . $msc . '.';
+				displayExecTime($sql);
 				exit;
 			} else{
 				echo '<p>Number of survey respondents per calamity that 
@@ -95,8 +93,7 @@
 			$result = mysql_query($two);
 			$numrows = mysql_num_rows($result);
 			if($numrows == 0){
-				echo 'Query returned no results and executed within '
-				  . $msc . '.';
+				displayExecTime($sql);
 				exit;
 			} else{
 				$row = mysql_fetch_array($result);
@@ -108,8 +105,7 @@
 		$result = mysql_query($sql);
 		$numrows = mysql_num_rows($result);
 		if($numrows == 0){
-			echo 'Query returned no results and executed within '
-			  . $msc . '.';
+			displayExecTime($sql);
 			exit;
 		} else{
 			echo '<html><head><title>Results</title></head><body>';
